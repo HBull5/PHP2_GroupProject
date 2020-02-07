@@ -4,8 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/htdocs/projects/PHP2_GroupProject/account/account_edit.php</file>
-            <file>file:/Applications/XAMPP/htdocs/projects/PHP2_GroupProject/model/address_db.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/projects/PHP2_GroupProject/email/PHPMailer.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/projects/PHP2_GroupProject/email/POP3.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/projects/PHP2_GroupProject/email/smtp.php</file>
         </group>
     </open-files>
 </project-private>
