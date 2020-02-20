@@ -13,6 +13,14 @@ foreach ($product_ids as $product_id) {
     $products[] = $product;   // add product to array
 }
 
+// Adds inventory column to products if doesn't exist 
+if(empty(inventoryExists())) {
+    createInventoryColumn();
+    for($i = 1; $i <= 10; $i++) {
+        updateInventory($i, 10);
+    }
+} 
+
 // Display the home page
 include('home_view.php');
 ?>
