@@ -16,7 +16,7 @@ foreach ($product_ids as $product_id) {
 // Adds inventory column to products if doesn't exist 
 if(empty(inventoryExists())) {
     createInventoryColumn();
-    for($i = 1; $i <= 10; $i++) {
+    for($i = 1; $i <= getNumProducts(); $i++) {
         updateInventory($i, 10);
     }
 } 

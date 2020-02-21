@@ -164,4 +164,25 @@ function updateInventory($productID, $qty) {
     $statement->execute();
     $statement->closeCursor();
 }
+
+function getInventory($productID) {
+    global $db;
+    $query = 'SELECT inventory FROM products WHERE productID = :productID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':productID', $productID);
+    $statement->execute();
+    $qty = $statement->fetch(PDO::FETCH_COLUMN, 0);
+    $statement->closeCursor();
+    return $qty;
+}
+
+function getNumProducts() {
+    global $db;
+    $query = 'SELECT COUNT(productID) FROM products';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $numProducts = $statement->fetch(PDO::FETCH_COLUMN, 0);
+    $statement->closeCursor();
+    return $numProducts;
+}
 ?>
