@@ -10,6 +10,8 @@ require_once('model/product_db.php');
 require_once('model/fields.php');
 require_once('model/validate.php');
 
+require_once('../email/email.php');
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -240,9 +242,13 @@ switch ($action) {
         $order_date = strtotime($order['orderDate']);
         $order_date = date('M j, Y', $order_date);
         $order_items = get_order_items($order_id);
+        $email = $_SESSION['user']['emailAddress'];
+        $first_name = $_SESSION['user']['firstName'];
+        $last_name = $_SESSION['user']['lastName'];
 
         $shipping_address = get_address($order['shipAddressID']);
         $billing_address = get_address($order['billingAddressID']);
+        sendEmail('My Guitar Shop', $first_name, $last_name, $email, $order_items, $order_id, $shipping_address, $billing_address);
         
         include 'account_view_order.php';
         break;
