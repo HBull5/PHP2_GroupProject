@@ -72,7 +72,7 @@
     $email->SingleTo  = true;	
     $email->From      = 'murielbroom@gmail.com'; 
     $email->FromName  = 'Muriel Broom'; 
-    $email->Subject   = 'Purchases from Guitar Shop PHP Class';
+    $email->Subject   = 'Purchases from Guitar Shop PHP';
     $email->Body      = $messageHTML ; 
     $email->AltBody = $message;            
     $destination_email_address = $customerEmail;
@@ -81,8 +81,6 @@
     $email->AddAddress($destination_email_address, $destination_user_name);
          if(!$email->Send()) {
          echo "Mailer Error: " . $email->ErrorInfo;
-          } else {
-           echo "Message sent!";
           }
     }
 ?>
