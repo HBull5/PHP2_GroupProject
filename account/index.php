@@ -12,6 +12,8 @@ require_once('../email/email.php');
 require_once('model/fields.php');
 require_once('model/validate.php');
 
+require_once('../email/email.php');
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
