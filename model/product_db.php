@@ -132,4 +132,57 @@ function delete_product($product_id) {
         display_db_error($error_message);
     }
 }
+
+// Inventory Control Functions
+function inventoryExists() {
+    global $db;
+    $query = 'SHOW COLUMNS FROM products LIKE \'inventory\'';
+    $statement = $db->prepare($query);
+    //$statement->bindValue(':columnName', $columnName);
+    $statement->execute();
+    $exists = $statement->fetch();
+    $statement->closeCursor();
+    return $exists; 
+}
+
+function createInventoryColumn() {
+    global $db;
+    $query = 'ALTER TABLE products ADD inventory INT(255)';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function updateInventory($productID, $qty) {
+    global $db;
+    $query = 'UPDATE products
+              SET inventory = :qty
+              WHERE productID = :productID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':qty', $qty);
+    $statement->bindValue(':productID', $productID);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function getInventory($productID) {
+    global $db;
+    $query = 'SELECT inventory FROM products WHERE productID = :productID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':productID', $productID);
+    $statement->execute();
+    $qty = $statement->fetch(PDO::FETCH_COLUMN, 0);
+    $statement->closeCursor();
+    return $qty;
+}
+
+function getNumProducts() {
+    global $db;
+    $query = 'SELECT COUNT(productID) FROM products';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $numProducts = $statement->fetch(PDO::FETCH_COLUMN, 0);
+    $statement->closeCursor();
+    return $numProducts;
+}
 ?>

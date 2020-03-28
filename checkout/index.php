@@ -106,6 +106,14 @@ switch ($action) {
         $order_id = add_order($card_type, $card_number,
                               $card_cvv, $card_expires);
 
+        // Code to update invenotry, could probably use a better name than buggy
+        $buggy = $_SESSION['cart'];
+        for($i = 1; $i < getNumProducts(); $i++) {
+            if(isset($buggy[$i])) {
+                updateInventory($i, (getInventory($i) - $buggy[$i]));
+            }
+        }
+
         foreach($cart as $product_id => $item) {
             $item_price = $item['list_price'];
             $discount = $item['discount_amount'];

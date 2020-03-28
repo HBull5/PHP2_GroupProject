@@ -7,6 +7,8 @@ require_once('model/address_db.php');
 require_once('model/order_db.php');
 require_once('model/product_db.php');
 
+require_once('../email/email.php');
+
 require_once('model/fields.php');
 require_once('model/validate.php');
 
