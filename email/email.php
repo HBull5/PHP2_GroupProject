@@ -41,7 +41,7 @@
                             </head>
                             <body>
                                 <h2>We at $nameOfCompany thank you for your order $customerFirstName $customerLastName</h2>
-                                <p>Your order has been received and is now being processed. Your order details are shown below for your reference.</p>
+                                <p>Your order has been received and is now being processed. Your order details are shown below for your reference:</p>
                                 <h1>Order: #$order_id </h1>
                                 <table>
                                     <thead>
